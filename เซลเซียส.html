@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>celcius</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+    <div class="card1">
+        <img src="https://3.bp.blogspot.com/-a0L7vNa4yQ0/UGQvToXnrYI/AAAAAAAAAMs/cYak4piYkmo/s1600/_DSC8782.jpg"
+            alt="Avatar" style="width:100%">
+        <caption>เกาะสี่ เกาะห้า @ปากพะยูน,พัทลุง</caption>
+        <hr>
+        <input type="text" id="la" placeholder="Latitude" size="20">
+        <input type="text" id="lo" placeholder="Longitude" size="20">
+        <button id="search" class="">Dowload</button>
+        <button id="reset" class="btn-lm btn-danger">Reset</button>
+
+        <h3>Weather</h3>
+        <p class="test2">
+            <span id="name1">Name: </span><br>
+            <span id="sys_country1">ประเทศ: </span><br>
+            <button id="btn-2" type="button" onclick="dpdate()">show date</button>
+        <p id="showdate"></p>
+        </p>
+        <span id="humidity1">ความชื้น: </span>%<br>
+        <span id="sys_sunrise1">พระอาทิตย์ขึ้น: </span><br>
+        <span id="sys_sunset1">พระอาทิตย์ตก: </span><br>
+
+
+
+        <span id="main_temp1">อุณหภูมิ:</span><br>
+
+        
+
+
+    </div>
+    </div>
+    </center>
+    <script>
+        function loadweather() {
+            var url = "http://api.openweathermap.org/data/2.5/weather?lat=7.376078&lon=99.743488&appid=a28d46fac268c82a0dc8eabda7fd2b94&units=metric";
+            $.getJSON(url)
+                .done((data) => {
+                    console.log(data)
+                    $("#name").append(data.name);
+                    
+                    $("#cel").append(data.cel);
+                    $("#humidity").append(data.main.humidity);
+                    $("#sys_country").append(data.sys.country);
+                    $("#sys_sunrise").append(data.sys.sunrise);
+                    $("#sys_sunset").append(data.sys.sunset);
+               $("#main_temp").append(data.main.temp);
+
+                })
+                .fail((xhr, status, err) => {
+                    console.log("error")
+                });
+        }
+
+        function searchweather() {
+            var url = "http://api.openweathermap.org";
+            var a = $("#la").val();
+            var b = $("#lo").val();
+
+            url = url + "/data/2.5/weather?lat=" + a + "&lon=" + b + "&appid=a28d46fac268c82a0dc8eabda7fd2b94&units=metric";
+
+            $.getJSON(url)
+                .done((data) => {
+                    console.log(data)
+                    $("#name1").append(data.name);        
+                    $("#cel").append(data.cel);
+                    $("#humidity1").append(data.main.humidity);
+                    $("#sys_country1").append(data.sys.country);
+                    $("#sys_sunrise1").append(data.sys.sunrise);
+                    $("#sys_sunset1").append(data.sys.sunset);
+                    $("#main_temp1").append(data.main.temp);
+
+
+                })
+                .fail((xhr, status, err) => {
+                    console.log("error")
+                });
+        }
+
+        function reset() {
+            $("#la").val("");
+            $("#lo").val("");
+            $.removeData();
+        }
+        $(() => {
+            loadweather();
+            $("#search").click(searchweather);
+            $("#reset").click(reset);
+        });
+   
+
+</body>
+
+</html>

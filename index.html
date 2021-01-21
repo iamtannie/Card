@@ -12,12 +12,14 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
+    
     #search{
-      background-color: midnightblue;
+      background-color: black;
       color: whitesmoke;
     }
     #btn1 {
-      background-color: palevioletred;
+      background-color: gray;
+      color: pink;
       width: 20%;
       font-style: normal;
       }
@@ -28,8 +30,8 @@
      font-style: normal;
      }
     #pic{
-      margin-top: auto;
-      padding: auto;
+      margin-top: center;
+      padding: center;
     }
     body{
       font-family: ;
@@ -37,12 +39,11 @@
       background-color: gray   
     }
     p.test2 {
-    background-color: pink;
+    background-color: ;
     width: 250px; 
     border: 10px solid white-space: nowrap;;
     word-break: break-all;
-    font-family: fantasy;
-}
+    font-family: fantasy;}
   </style>
 
 <style type="text/css"></style>
@@ -50,7 +51,7 @@
 
 <body>
   <center>
-    <h1 style="background-color:rgb(0,0,0);color:white">
+    <h1 style="background-color: pink;color:gray">
       wellcome to my page
       </h1>
     <hr>
@@ -87,15 +88,15 @@
     <hr>
           <input type="text" id="la" placeholder="Latitude" size="20">
            <input type="text" id="lo" placeholder="Longitude" size="20">
-           <button id="search" class="" >Dowload</button>
-           <button id="reset" class="btn-lm btn-danger" >Reset</button>
+           <button id="search"  >Dowload</button>
+           
            
          <h3 >Weather</h3>
           <p class="test2">
-            <span id="name1">Name: </span><br>
+            <span id="name1">ชื่อ: </span><br>
             <span id="sys_country1">ประเทศ: </span><br>
-            <span id="main_temp1">อุณหภูมิ: </span><br>
-            <span id="humidity1">ความชื้น: </span><br>
+            <span id="main_temp1">อุณหภูมิ: </span>°C<br>
+            <span id="humidity1">ความชื้น: </span>%<br>
             <span id="sys_sunrise1">พระอาทิตย์ขึ้น: </span><br>
              <span id="sys_sunset1">พระอาทิตย์ตก: </span><br>
              <button id="btn-2" type="button" onclick="dpdate()">show date</button>
@@ -107,7 +108,7 @@
   </center> 
    <script>
     function loadweather(){ 
-      var url ="http://api.openweathermap.org/data/2.5/weather?lat=7.376078&lon=99.743488&appid=a28d46fac268c82a0dc8eabda7fd2b94";
+      var url ="http://api.openweathermap.org/data/2.5/weather?lat=7.376078&lon=99.743488&appid=a28d46fac268c82a0dc8eabda7fd2b94&units=metric";
             $.getJSON(url)
              .done((data)=>{
                console.log(data)
@@ -129,7 +130,7 @@
             var a = $("#la").val();
             var b = $("#lo").val();
  
-            url = url + "/data/2.5/weather?lat=" + a + "&lon=" + b +"&appid=a28d46fac268c82a0dc8eabda7fd2b94"; 
+            url = url + "/data/2.5/weather?lat=" + a + "&lon=" + b +"&appid=a28d46fac268c82a0dc8eabda7fd2b94&units=metric"; 
          
              $.getJSON(url)
              .done((data)=>{
@@ -159,7 +160,7 @@
              $("#reset").click(reset);  
       });
     </script>      
-    
+  
 
 
 
