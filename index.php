@@ -108,7 +108,7 @@
   </center> 
    <script>
     function loadweather(){ 
-      var url ="https://api.openweathermap.org/data/2.5/weather?lat=7.376078&lon=99.743488&appid=d1050f14ef24195c30684a63fd927a4f&units=metric";
+      var url ="https://api.openweathermap.org/data/2.5/weather?lat=7.36991&lon=100.39418&appid=d1050f14ef24195c30684a63fd927a4f&units=metric";
             $.getJSON(url)
              .done((data)=>{
                console.log(data)
